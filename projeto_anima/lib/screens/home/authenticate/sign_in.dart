@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:projeto_anima/screens/home/authenticate/register.dart';
 import 'package:projeto_anima/service/auth.dart';
 import 'package:projeto_anima/util/constants.dart';
@@ -27,7 +28,7 @@ class _SignInState extends State<SignIn> {
         : Scaffold(
             backgroundColor: Colors.brown[100],
             appBar: AppBar(
-              backgroundColor: Colors.brown[400],
+              backgroundColor: Colors.red[400],
               elevation: 0.0,
               title: Text("Entrar"),
               actions: <Widget>[
@@ -43,7 +44,7 @@ class _SignInState extends State<SignIn> {
             body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/guy.jpg'),
+                    image: AssetImage('assets/images/una.png'),
                     fit: BoxFit.cover),
               ),
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),

@@ -26,7 +26,7 @@ class _RegisterState extends State<Register> {
         : Scaffold(
             backgroundColor: Colors.brown[100],
             appBar: AppBar(
-              backgroundColor: Colors.brown[400],
+              backgroundColor: Colors.red[400],
               elevation: 0.0,
               title: Text("Registrar"),
               actions: <Widget>[
@@ -42,7 +42,7 @@ class _RegisterState extends State<Register> {
             body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/capa.png'),
+                    image: AssetImage('assets/images/una.png'),
                     fit: BoxFit.cover),
               ),
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),

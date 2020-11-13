@@ -6,10 +6,10 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[500],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Início"),
-        backgroundColor: Colors.brown[400],
+        backgroundColor: Colors.red[400],
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
@@ -18,6 +18,21 @@ class Home extends StatelessWidget {
               },
               icon: Icon(Icons.person),
               label: Text('Sair'))
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.red[400],
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
+        elevation: 2.0,
+        currentIndex: 1,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.people), title: Text("Mentoria")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.video_library), title: Text("Capacitação")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.access_time), title: Text("Acompanhamento")),
         ],
       ),
     );
