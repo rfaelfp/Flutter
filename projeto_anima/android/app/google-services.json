@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "998527441187",
+    "firebase_url": "https://projeto-anima-a5ba5.firebaseio.com",
+    "project_id": "projeto-anima-a5ba5",
+    "storage_bucket": "projeto-anima-a5ba5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998527441187:android:8ec21afb9ae8955c325496",
+        "android_client_info": {
+          "package_name": "com.example.projeto_anima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998527441187-37a1ngm5dlh1dp5tphelbimr5im7qvl2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgFYIYrdGqOlwwT0Byn7nhBsvCnOtRAkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998527441187-37a1ngm5dlh1dp5tphelbimr5im7qvl2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
