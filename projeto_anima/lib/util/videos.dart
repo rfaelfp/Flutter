@@ -7,6 +7,7 @@ YoutubePlayerController implementsVideo(String idVideo) {
       flags: YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
+        enableCaption: false,
       ));
   return _controller;
 }
@@ -18,85 +19,51 @@ YoutubePlayer implementsWindowVideo(dynamic _controller) {
       progressIndicatorColor: Colors.red[400]);
 }
 
-List<String> videosModuloFinanceiro = [
+List<Widget> addWidgetList(List<String> videos) {
+  int cont = 1;
+  List<Widget> list = List<Widget>();
+  for (String video in videos) {
+    list.add(Divider());
+    list.add(Text('Aula ' + cont.toString()));
+    list.add(implementsWindowVideo(implementsVideo(video)));
+    cont++;
+  }
+  return list;
+}
+
+dynamic addVideos(List<String> links) {
+  List<Widget> videos = addWidgetList(links);
+  return SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        for (Widget video in videos) video,
+      ],
+    ),
+  );
+}
+
+List<String> listModuloFinanceiro = [
   '5RKu-87zTOw',
   '5RKu-87zTOw',
   '5RKu-87zTOw',
   '5RKu-87zTOw'
 ];
-List<String> videosModuloComunicacao = [
+List<String> listModuloComunicacao = [
   'giONDI-shl0',
   'giONDI-shl0',
   'giONDI-shl0'
 ];
-List<String> videosModuloTecnologia = [
+List<String> listModuloTecnologia = [
   'Ou0ceDK492w',
   'Ou0ceDK492w',
   'Ou0ceDK492w',
   'Ou0ceDK492w'
 ];
-List<String> videosModuloGestao = [
+List<String> listModuloGestao = [
   'vqAgbGQRw0A',
   'vqAgbGQRw0A',
   'vqAgbGQRw0A',
   'vqAgbGQRw0A'
 ];
-
-dynamic videosFinanceiros() {
-  return SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        implementsWindowVideo(implementsVideo(videosModuloFinanceiro[0])),
-        Divider(),
-        implementsWindowVideo(implementsVideo(videosModuloFinanceiro[1])),
-        Divider(),
-        implementsWindowVideo(implementsVideo(videosModuloFinanceiro[2])),
-        Divider(),
-        implementsWindowVideo(implementsVideo(videosModuloFinanceiro[3])),
-        Divider(),
-      ],
-    ),
-  );
-}
-
-dynamic videosComunicacao() {
-  return SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        implementsWindowVideo(implementsVideo(videosModuloComunicacao[0])),
-        implementsWindowVideo(implementsVideo(videosModuloComunicacao[1])),
-        implementsWindowVideo(implementsVideo(videosModuloComunicacao[2])),
-      ],
-    ),
-  );
-}
-
-dynamic videosTecnologia() {
-  return SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        implementsWindowVideo(implementsVideo(videosModuloTecnologia[0])),
-        implementsWindowVideo(implementsVideo(videosModuloTecnologia[1])),
-        implementsWindowVideo(implementsVideo(videosModuloTecnologia[2])),
-        implementsWindowVideo(implementsVideo(videosModuloTecnologia[3])),
-      ],
-    ),
-  );
-}
-
-dynamic videosGestao() {
-  return SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        implementsWindowVideo(implementsVideo(videosModuloGestao[0])),
-        implementsWindowVideo(implementsVideo(videosModuloGestao[1])),
-        implementsWindowVideo(implementsVideo(videosModuloGestao[2])),
-        implementsWindowVideo(implementsVideo(videosModuloGestao[3])),
-      ],
-    ),
-  );
-}

@@ -23,10 +23,12 @@ class _VideosCapacitacaoState extends State<VideosCapacitacao> {
         elevation: 0.0,
       ),
       body: widget.index == 1
-          ? videosFinanceiros()
+          ? addVideos(listModuloFinanceiro)
           : widget.index == 2
-              ? videosComunicacao()
-              : widget.index == 3 ? videosTecnologia() : videosGestao(),
+              ? addVideos(listModuloComunicacao)
+              : widget.index == 3
+                  ? addVideos(listModuloTecnologia)
+                  : addVideos(listModuloGestao),
     );
   }
 }
