@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_anima/screens/videosCapacitacao/videos_capacitacao.dart';
 
 Card cardCapacitacao(BuildContext context, String titulo,
-    String textoSecundario, String descricao, String imagem) {
+    String textoSecundario, String descricao, String imagem, int index) {
   return Card(
     clipBehavior: Clip.antiAlias,
     child: Column(
@@ -30,9 +30,7 @@ Card cardCapacitacao(BuildContext context, String titulo,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return VideosCapacitacao(
-                      titulo: titulo,
-                    );
+                    return VideosCapacitacao(titulo: titulo, index: index);
                   },
                 ));
               },
@@ -40,7 +38,11 @@ Card cardCapacitacao(BuildContext context, String titulo,
             ),
           ],
         ),
-        Image.asset('assets/images/' + imagem),
+        Image.asset(
+          'assets/images/' + imagem,
+          height: 250.0,
+          width: 1000.0,
+        ),
       ],
     ),
   );
