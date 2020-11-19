@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_anima/screens/videosCapacitacao/videos_capacitacao.dart';
+import 'package:projeto_anima/util/loading.dart';
 
 Card cardCapacitacao(BuildContext context, String titulo,
     String textoSecundario, String descricao, String imagem, int index) {
@@ -27,8 +28,8 @@ Card cardCapacitacao(BuildContext context, String titulo,
           children: [
             FlatButton(
               textColor: const Color(0xFF6200EE),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
+              onPressed: () async {
+                await Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return VideosCapacitacao(titulo: titulo, index: index);
                   },

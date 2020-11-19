@@ -95,8 +95,20 @@ class _SignInState extends State<SignIn> {
                           print('válido');
                           if (result == null) {
                             setState(() {
-                              error =
-                                  'Não é possível logar com as credenciais inseridas';
+                              print(_auth.erro);
+                              if (_auth.erro != null) {
+                                if (_auth.erro
+                                    .contains('ERROR_INVALID_EMAIL')) {
+                                  error = "O e-mail inserido é inválido!";
+                                } else if (_auth.erro
+                                    .contains('ERROR_WRONG_PASSWORD')) {
+                                  error =
+                                      'A senha ou o e-mail foi digitado incorretamente';
+                                } else {
+                                  error =
+                                      'Não é possível logar com as credenciais inseridas';
+                                }
+                              }
                               loading = false;
                             });
                           }
