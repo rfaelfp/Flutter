@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -24,11 +23,13 @@ YoutubePlayer implementsWindowVideo(dynamic _controller) {
 }
 
 List<Widget> addWidgetList(List<String> videos) {
-  int cont = 1;
+  int cont = 01;
   List<Widget> list = List<Widget>();
   for (String video in videos) {
-    list.add(Divider());
-    //list.add(Text('Aula ' + cont.toString()));
+    list.add(Padding(
+        padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+        child: Text('#' + cont.toString() + ' Módulo Gestão Financeira',
+            style: TextStyle(fontSize: 18))));
     list.add(implementsWindowVideo(implementsVideo(video)));
     cont++;
   }

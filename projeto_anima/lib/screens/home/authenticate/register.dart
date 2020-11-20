@@ -163,7 +163,6 @@ class _RegisterState extends State<Register> {
                                           'Não é possível logar com as credenciais inseridas';
                                     }
                                   }
-
                                   loading = false;
                                 });
                               }
