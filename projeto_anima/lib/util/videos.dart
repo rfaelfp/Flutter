@@ -30,9 +30,9 @@ List<Widget> addWidgetList(List<String> videos) {
     list.add(
       Card(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            side: BorderSide(color: Colors.grey[500], width: 1.5)),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            side: BorderSide(color: Colors.grey[500], width: 0.5)),
+        clipBehavior: Clip.antiAlias,
         child: Column(
           children: [
             Text(
@@ -40,7 +40,7 @@ List<Widget> addWidgetList(List<String> videos) {
               textAlign: TextAlign.start,
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
               child: implementsWindowVideo(
                 implementsVideo(video),
               ),
@@ -62,7 +62,7 @@ dynamic addVideos(List<String> links) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         for (Widget video in videos) video,
-        Text(getDetail('5RKu-87zTOw').toString()),
+        Text('Teste'),
       ],
     ),
   );

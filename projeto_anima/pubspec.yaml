@@ -34,7 +34,8 @@ dependencies:
   flutter_spinkit: "^4.0.0"
   youtube_player_flutter: ^6.1.0+7
   http: ^0.12.2
-  webview_flutter: ^0.3.0  
+  webview_flutter: ^0.3.0
+  validadores: ^0.0.1
 
 dev_dependencies:
   flutter_test:

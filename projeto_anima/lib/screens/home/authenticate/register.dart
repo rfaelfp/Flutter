@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:projeto_anima/service/auth.dart';
 import 'package:projeto_anima/util/constants.dart';
 import 'package:projeto_anima/util/loading.dart';
@@ -85,6 +87,9 @@ class _RegisterState extends State<Register> {
                           height: 20.0,
                         ),
                         TextFormField(
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(11)
+                          ],
                           decoration:
                               textInputDecoration.copyWith(hintText: 'CPF'),
                           validator: (val) => val.isEmpty
@@ -147,9 +152,10 @@ class _RegisterState extends State<Register> {
                             if (_formKey.currentState.validate()) {
                               setState(() => loading = true);
 
-                              dynamic result = await _auth
-                                  .regiterWithEmailAndPassword(email, pwd);
-
+                              dynamic result =
+                                  await _auth.regiterWithEmailAndPassword(
+                                      email, pwd, nome, sobrenome, cpf);
+                              print(result);
                               if (result == null) {
                                 setState(() {
                                   print(_auth.erro);

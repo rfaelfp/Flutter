@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projeto_anima/models/user.dart';
+import 'package:projeto_anima/service/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -45,13 +46,17 @@ class AuthService {
 
   // Método para registrar com login e senha
 
-  Future regiterWithEmailAndPassword(String email, String pwd) async {
+  Future regiterWithEmailAndPassword(String email, String pwd, String nome,
+      String sobrenome, String cpf) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           // esse método é do firebase
           email: email,
           password: pwd);
       FirebaseUser user = result.user;
+      // realiza a criação da coleção no cloud firestore com a uid.
+      await DatabaseService(uid: user.uid)
+          .updateUserData(nome, sobrenome, cpf, email);
       return _userFromFireBaseUser(user);
     } catch (e) {
       erro = e.toString();
