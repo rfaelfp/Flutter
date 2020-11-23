@@ -17,29 +17,40 @@ YoutubePlayerController implementsVideo(String idVideo) {
 
 YoutubePlayer implementsWindowVideo(dynamic _controller) {
   return YoutubePlayer(
-      controller: _controller,
-      showVideoProgressIndicator: true,
-      progressIndicatorColor: Colors.red[400]);
+    controller: _controller,
+    showVideoProgressIndicator: true,
+    progressIndicatorColor: Colors.red[400],
+  );
 }
 
 List<Widget> addWidgetList(List<String> videos) {
   int cont = 01;
   List<Widget> list = List<Widget>();
   for (String video in videos) {
-    list.add(Padding(
-        padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-        child: Text('#' + cont.toString() + ' Módulo Gestão Financeira',
-            style: TextStyle(fontSize: 18))));
-    list.add(implementsWindowVideo(implementsVideo(video)));
+    list.add(
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            side: BorderSide(color: Colors.grey[500], width: 1.5)),
+        child: Column(
+          children: [
+            Text(
+              'Vídeo ' + cont.toString(),
+              textAlign: TextAlign.start,
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+              child: implementsWindowVideo(
+                implementsVideo(video),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
     cont++;
   }
-  return list;
-}
-
-List<String> listDetail(dynamic detail) {
-  List<String> list = new List<String>();
-  list.add(detail[8]);
-  list.add(detail[9]);
   return list;
 }
 
@@ -51,12 +62,15 @@ dynamic addVideos(List<String> links) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         for (Widget video in videos) video,
+        Text(getDetail('5RKu-87zTOw').toString()),
       ],
     ),
   );
 }
 
-Future<dynamic> getDetail(String userUrl) async {
+Future<List> getDetail(String userUrl) async {
+  List<String> list;
+  String autor;
   String embedUrl =
       "https://noembed.com/embed?url=https://www.youtube.com/watch?v=$userUrl";
 
@@ -67,8 +81,9 @@ Future<dynamic> getDetail(String userUrl) async {
   try {
     if (res.statusCode == 200) {
       var data = json.decode(res.body);
-      data = listDetail(data);
-      return data;
+      autor = data['author_name'];
+      list.add(autor);
+      return list;
     } else {
       //return null if status code other than 200
       return null;

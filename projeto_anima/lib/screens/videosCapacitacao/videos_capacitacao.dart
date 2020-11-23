@@ -4,8 +4,9 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:projeto_anima/util/videos.dart';
 
 class VideosCapacitacao extends StatefulWidget {
+  YoutubeMetaData videoMetaData;
   final String titulo;
-  int index;
+  final int index;
   VideosCapacitacao({this.titulo, this.index});
   @override
   _VideosCapacitacaoState createState() => _VideosCapacitacaoState();
@@ -16,7 +17,7 @@ class _VideosCapacitacaoState extends State<VideosCapacitacao> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.red[50],
       appBar: AppBar(
         title: Text(widget.titulo),
         backgroundColor: Colors.red[400],

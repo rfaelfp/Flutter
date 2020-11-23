@@ -1,15 +1,41 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:projeto_anima/util/loading.dart';
 
 class Mentoria extends StatelessWidget {
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+  num _stackToView = 1;
   final String urlForm =
       "https://docs.google.com/forms/d/e/1FAIpQLSdQT7Cn7bnW0QhtZSXeueelAhk0s2a-NsfrykaMLIasY3bZrw/viewform";
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: WebView(
-        initialUrl: urlForm,
-        javascriptMode: JavascriptMode.unrestricted,
-      ),
+    return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) {
+        return IndexedStack(
+          index: _stackToView,
+          children: [
+            new WebView(
+              initialUrl: urlForm,
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (WebViewController webViewController) {
+                _controller.complete(webViewController);
+              },
+              onPageFinished: (finish) {
+                setState(
+                  () {
+                    _stackToView = 0;
+                  },
+                );
+              },
+            ),
+            Center(
+              child: Loading(),
+            ),
+          ],
+        );
+      },
     );
   }
 }

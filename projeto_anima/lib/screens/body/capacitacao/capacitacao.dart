@@ -4,6 +4,7 @@ import 'package:projeto_anima/util/card.dart';
 class Capacitacao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red[50],
       body: ListView(
         children: [
           cardCapacitacao(
