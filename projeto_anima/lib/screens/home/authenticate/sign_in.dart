@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:projeto_anima/screens/home/authenticate/register.dart';
 import 'package:projeto_anima/service/auth.dart';
 import 'package:projeto_anima/service/url_form.dart';
 import 'package:projeto_anima/util/constants.dart';
@@ -8,7 +6,6 @@ import 'package:projeto_anima/util/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
-  static dynamic url;
   SignIn({this.toggleView});
   @override
   _SignInState createState() => _SignInState();

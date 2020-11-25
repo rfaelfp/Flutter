@@ -47,7 +47,7 @@ class AuthService {
   // Método para registrar com login e senha
 
   Future regiterWithEmailAndPassword(String email, String pwd, String nome,
-      String sobrenome, String cpf) async {
+      String sobrenome, String cpf, bool acompanhamento) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           // esse método é do firebase
@@ -56,7 +56,7 @@ class AuthService {
       FirebaseUser user = result.user;
       // realiza a criação da coleção no cloud firestore com a uid.
       await DatabaseService(uid: user.uid)
-          .updateUserData(nome, sobrenome, cpf, email);
+          .updateUserData(nome, sobrenome, cpf, email, acompanhamento);
       return _userFromFireBaseUser(user);
     } catch (e) {
       erro = e.toString();

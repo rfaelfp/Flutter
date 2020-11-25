@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:projeto_anima/service/auth.dart';
 import 'package:projeto_anima/util/constants.dart';
 import 'package:projeto_anima/util/loading.dart';
+import 'package:projeto_anima/service/url_form.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -13,6 +14,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final UrlForm _url = UrlForm();
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
@@ -25,6 +27,7 @@ class _RegisterState extends State<Register> {
   String pwd = '';
   String pwdRepeat = '';
   String error = '';
+  bool acompanhamento = false;
 
   @override
   Widget build(BuildContext context) {
@@ -151,12 +154,18 @@ class _RegisterState extends State<Register> {
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () async {
+                            _url.main();
                             if (_formKey.currentState.validate()) {
                               setState(() => loading = true);
 
                               dynamic result =
                                   await _auth.regiterWithEmailAndPassword(
-                                      email, pwd, nome, sobrenome, cpf);
+                                      email,
+                                      pwd,
+                                      nome,
+                                      sobrenome,
+                                      cpf,
+                                      acompanhamento);
                               print(result);
                               if (result == null) {
                                 setState(() {
