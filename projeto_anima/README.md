@@ -1,6 +1,6 @@
-# projeto_anima
+# Projeto Anima
 
-A new Flutter project.
+O presente projeto tem por escopo desenvolver uma aplicação funcional para atender a necessidade do projeto Estímulo 2020.
 
 ## Getting Started
 
