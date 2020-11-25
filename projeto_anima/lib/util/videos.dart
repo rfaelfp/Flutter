@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:http/http.dart' as http;
 
 YoutubePlayerController implementsVideo(String idVideo) {
   YoutubePlayerController _controller = YoutubePlayerController(
@@ -28,24 +26,35 @@ List<Widget> addWidgetList(List<String> videos) {
   List<Widget> list = List<Widget>();
   for (String video in videos) {
     list.add(
-      Card(
-        shape: RoundedRectangleBorder(
+      Container(
+        decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            side: BorderSide(color: Colors.grey[500], width: 0.5)),
-        clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: [
-            Text(
-              'Vídeo ' + cont.toString(),
-              textAlign: TextAlign.start,
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
-              child: implementsWindowVideo(
-                implementsVideo(video),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[400],
+                  blurRadius: 27.0,
+                  spreadRadius: 7.0,
+                  offset: Offset(0, 0)),
+            ]),
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              side: BorderSide(color: Colors.grey[500], width: 0.5)),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            children: [
+              Text(
+                'Vídeo ' + cont.toString(),
+                textAlign: TextAlign.start,
               ),
-            ),
-          ],
+              Container(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 30),
+                child: implementsWindowVideo(
+                  implementsVideo(video),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -66,33 +75,6 @@ dynamic addVideos(List<String> links) {
       ],
     ),
   );
-}
-
-Future<List> getDetail(String userUrl) async {
-  List<String> list;
-  String autor;
-  String embedUrl =
-      "https://noembed.com/embed?url=https://www.youtube.com/watch?v=$userUrl";
-
-  //store http request response to res variable
-  var res = await http.get(embedUrl);
-  print("get youtube detail status code: " + res.statusCode.toString());
-
-  try {
-    if (res.statusCode == 200) {
-      var data = json.decode(res.body);
-      autor = data['author_name'];
-      list.add(autor);
-      return list;
-    } else {
-      //return null if status code other than 200
-      return null;
-    }
-  } on FormatException catch (e) {
-    print('invalid JSON' + e.toString());
-    //return null if error
-    return null;
-  }
 }
 
 final List<String> listModuloFinanceiro = [

@@ -87,7 +87,9 @@ class _RegisterState extends State<Register> {
                           height: 20.0,
                         ),
                         TextFormField(
+                          keyboardType: TextInputType.number,
                           inputFormatters: [
+                            WhitelistingTextInputFormatter.digitsOnly,
                             LengthLimitingTextInputFormatter(11)
                           ],
                           decoration:

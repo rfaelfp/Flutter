@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_anima/screens/body/capacitacao/capacitacao.dart';
+import 'package:projeto_anima/screens/body/capacitacao.dart';
 import 'package:projeto_anima/screens/body/mentoria.dart';
 
 class NewPageScreen extends StatelessWidget {

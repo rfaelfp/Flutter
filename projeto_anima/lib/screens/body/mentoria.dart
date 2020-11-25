@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:projeto_anima/service/url_form.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:projeto_anima/util/loading.dart';
+import 'package:projeto_anima/screens/home/authenticate/sign_in.dart';
 
 class Mentoria extends StatelessWidget {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   num _stackToView = 1;
-  final String urlForm =
-      "https://docs.google.com/forms/d/e/1FAIpQLSdQT7Cn7bnW0QhtZSXeueelAhk0s2a-NsfrykaMLIasY3bZrw/viewform";
+  final String urlForm = UrlForm.url.toString();
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
