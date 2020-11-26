@@ -24,10 +24,6 @@ class InfoVideo {
     try {
       if (res.statusCode == 200) {
         var data = json.decode(res.body);
-        for (Map<String, dynamic> obj in data) {
-          title = obj[8];
-          autor = obj[9];
-        }
         return data;
       } else {
         //return null if status code other than 200
@@ -37,13 +33,6 @@ class InfoVideo {
       print('invalid JSON' + e.toString());
       //return null if error
       return null;
-    }
-  }
-
-  void preencheList(List list) async {
-    for (var i = 0; i < list.length; i++) {
-      dynamic info = await getDetail(list[i]);
-      list.add(info);
     }
   }
 }

@@ -157,7 +157,6 @@ class _RegisterState extends State<Register> {
                             _url.main();
                             if (_formKey.currentState.validate()) {
                               setState(() => loading = true);
-
                               dynamic result =
                                   await _auth.regiterWithEmailAndPassword(
                                       email,

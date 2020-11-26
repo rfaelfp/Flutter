@@ -37,18 +37,25 @@ List<Widget> addWidgetList(List<String> videos) {
                   offset: Offset(0, 0)),
             ]),
         child: Card(
+          color: Colors.grey[300],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
-              side: BorderSide(color: Colors.grey[500], width: 0.5)),
+              side: BorderSide(color: Colors.grey[500], width: 1.5)),
           clipBehavior: Clip.antiAlias,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Vídeo ' + cont.toString(),
-                textAlign: TextAlign.start,
+              Container(
+                padding: EdgeInsets.fromLTRB(20, 8, 0, 0),
+                child: Text(
+                  '#' + cont.toString(),
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 30),
+                padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
                 child: implementsWindowVideo(
                   implementsVideo(video),
                 ),
@@ -71,17 +78,16 @@ dynamic addVideos(List<String> links) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         for (Widget video in videos) video,
-        Text('Teste'),
       ],
     ),
   );
 }
 
 final List<String> listModuloFinanceiro = [
-  '5RKu-87zTOw',
-  '5RKu-87zTOw',
-  '5RKu-87zTOw',
-  '5RKu-87zTOw'
+  '8jjlGq86PHo',
+  's5pb8YLaVXA',
+  '09kssWxWbVY',
+  'xMqCZSy1yU4'
 ];
 final List<String> listModuloComunicacao = [
   'giONDI-shl0',

@@ -56,6 +56,7 @@ class _SignInState extends State<SignIn> {
                       height: 20.0,
                     ),
                     TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       decoration:
                           textInputDecoration.copyWith(hintText: 'E-mail'),
                       validator: (val) =>
@@ -105,6 +106,9 @@ class _SignInState extends State<SignIn> {
                                     .contains('ERROR_WRONG_PASSWORD')) {
                                   error =
                                       'A senha ou o e-mail foi digitado incorretamente';
+                                } else if (_auth.erro
+                                    .contains('ERROR_USER_NOT_FOUND')) {
+                                  error = 'Usuário não cadastrado.';
                                 } else {
                                   error =
                                       'Não é possível logar com as credenciais inseridas';

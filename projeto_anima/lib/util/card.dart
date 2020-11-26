@@ -77,7 +77,6 @@ Container cardCapacitacao(BuildContext context, String titulo,
                   textColor: Colors.white,
                   splashColor: Colors.white,
                   onPressed: () async {
-                    infoVideo.preencheList(list.listModuloComunicacao);
                     await Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         return VideosCapacitacao(titulo: titulo, index: index);
