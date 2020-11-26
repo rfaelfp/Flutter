@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_anima/util/info_videos.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 YoutubePlayerController implementsVideo(String idVideo) {
@@ -22,7 +23,7 @@ YoutubePlayer implementsWindowVideo(dynamic _controller) {
 }
 
 List<Widget> addWidgetList(List<String> videos) {
-  int cont = 01;
+  InfoVideo infoVideo = InfoVideo();
   List<Widget> list = List<Widget>();
   for (String video in videos) {
     list.add(
@@ -47,11 +48,22 @@ List<Widget> addWidgetList(List<String> videos) {
             children: [
               Container(
                 padding: EdgeInsets.fromLTRB(20, 8, 0, 0),
-                child: Text(
-                  '#' + cont.toString(),
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
+                child: FutureBuilder(
+                  future: infoVideo.preencheLista(video),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Container();
+                    } else {
+                      return Text(
+                        snapshot.data['title'] +
+                            '\n' +
+                            snapshot.data['author_name'],
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      );
+                    }
+                  },
                 ),
               ),
               Container(
@@ -65,7 +77,6 @@ List<Widget> addWidgetList(List<String> videos) {
         ),
       ),
     );
-    cont++;
   }
   return list;
 }

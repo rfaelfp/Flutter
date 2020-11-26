@@ -17,7 +17,6 @@ class InfoVideo {
     String embedUrl =
         "https://noembed.com/embed?url=https://www.youtube.com/watch?v=$userUrl";
 
-    //store http request response to res variable
     var res = await http.get(embedUrl);
     print("get youtube detail status code: " + res.statusCode.toString());
 
@@ -26,13 +25,16 @@ class InfoVideo {
         var data = json.decode(res.body);
         return data;
       } else {
-        //return null if status code other than 200
         return null;
       }
     } on FormatException catch (e) {
       print('invalid JSON' + e.toString());
-      //return null if error
       return null;
     }
+  }
+
+  Future preencheLista(String video) async {
+    dynamic data = await getDetail(video);
+    return data;
   }
 }

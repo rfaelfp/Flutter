@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_anima/screens/videosCapacitacao/videos_capacitacao.dart';
-import 'package:projeto_anima/util/info_videos.dart';
-import 'package:projeto_anima/util/listas_videos.dart';
 
 Container cardCapacitacao(BuildContext context, String titulo,
     String textoSecundario, String descricao, String imagem, int index) {
-  InfoVideo infoVideo = InfoVideo();
-  ListasVideos list = ListasVideos();
   return Container(
     decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(30)),
