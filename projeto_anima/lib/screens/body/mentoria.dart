@@ -4,7 +4,12 @@ import 'package:projeto_anima/service/url_form.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:projeto_anima/util/loading.dart';
 
-class Mentoria extends StatelessWidget {
+class Mentoria extends StatefulWidget {
+  @override
+  _MentoriaState createState() => _MentoriaState();
+}
+
+class _MentoriaState extends State<Mentoria> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   num _stackToView = 1;

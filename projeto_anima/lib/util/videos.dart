@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_anima/util/info_videos.dart';
+import 'package:projeto_anima/service/info_videos.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 YoutubePlayerController implementsVideo(String idVideo) {
@@ -22,7 +22,11 @@ YoutubePlayer implementsWindowVideo(dynamic _controller) {
   );
 }
 
-List<Widget> addWidgetList(List<String> videos) {
+List<Widget> addWidgetList(Map map) {
+  List videos = List();
+  map.forEach((key, value) {
+    videos.add(value.toString());
+  });
   InfoVideo infoVideo = InfoVideo();
   List<Widget> list = List<Widget>();
   for (String video in videos) {
@@ -52,7 +56,9 @@ List<Widget> addWidgetList(List<String> videos) {
                   future: infoVideo.preencheLista(video),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
-                      return Container();
+                      return Container(
+                        child: Text('Carregando...'),
+                      );
                     } else {
                       return Text(
                         snapshot.data['title'] +
@@ -81,7 +87,7 @@ List<Widget> addWidgetList(List<String> videos) {
   return list;
 }
 
-dynamic addVideos(List<String> links) {
+Future addVideos(Map links) async {
   List<Widget> videos = addWidgetList(links);
   return SingleChildScrollView(
     child: Column(

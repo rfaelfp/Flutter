@@ -4,7 +4,7 @@ import 'package:projeto_anima/service/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  String erro = null;
+  String erro;
 
   // Método para criar objeto baseado no FireBaseUser
   User _userFromFireBaseUser(FirebaseUser user) {
