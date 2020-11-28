@@ -8,42 +8,57 @@ class Capacitacao extends StatefulWidget {
 }
 
 class _CapacitacaoState extends State<Capacitacao> {
+  Color c = const Color(0xFF363a7b);
   final keyLoad = 'loaded';
   Widget build(BuildContext context) {
-    SharedPreferences.setMockInitialValues({});
+    //SharedPreferences.setMockInitialValues({});
     //Future.delayed(Duration.zero, () => _showAlert(context));
     return Scaffold(
-      backgroundColor: Colors.red[50],
+      backgroundColor: Colors.grey[300],
       body: Container(
         child: ListView(
           children: [
+            Container(
+              child: Center(
+                child: Text(
+                  'Capacitação Geral',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      shadows: [Shadow(blurRadius: 4.0, color: Colors.white)]),
+                ),
+              ),
+              color: c,
+              height: 50.0,
+            ),
             cardCapacitacao(
                 context,
                 'Módulo Financeiro',
                 'Capacitação em Gestão de Negócio',
                 'Descrição do Curso.',
-                'modulo_financeiro.png',
+                'fin2.jpg',
                 1),
             cardCapacitacao(
                 context,
                 'Módulo Comunicação e Marketing',
                 'Capacitação em Gestão de Negócio',
                 'Descrição do Curso',
-                'modulo_comunicacao.png',
+                'com.jpg',
                 2),
             cardCapacitacao(
                 context,
                 'Módulo Tecnologia e Inovação',
                 'Capacitação em Gestão de Negócio',
                 'Descrição do Curso',
-                'modulo_tecnologia.jpg',
+                'tec.jpeg',
                 3),
             cardCapacitacao(
                 context,
                 'Módulo Gestão de RH',
                 'Capacitação em Gestão de Negócio',
                 'Descrição do Curso',
-                'modulo_gestao.png',
+                'ges.jpg',
                 4),
           ],
         ),

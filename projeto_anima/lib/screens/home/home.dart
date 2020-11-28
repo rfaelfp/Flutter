@@ -21,28 +21,36 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: false,
-        title: indiceAtual == 0
-            ? Text('Mentoria Específica')
-            : indiceAtual == 1
-                ? Text('Capacitação Geral')
-                : Text('Acompanhemento do Negócio'),
-        backgroundColor: Colors.red[400],
-        elevation: 0.0,
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/log2.png',
+              fit: BoxFit.contain,
+              height: 26,
+            )
+          ],
+        ),
+        backgroundColor: Colors.white,
+        elevation: 00.0,
         actions: <Widget>[
           FlatButton.icon(
               onPressed: () async {
                 await _auth.signOut();
               },
               icon: Icon(Icons.person),
-              label: Text('Sair'))
+              label: Text(
+                'Sair',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ))
         ],
       ),
       body: _telas[indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.red[400],
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.black,
-        elevation: 2.0,
+        showSelectedLabels: true,
+        backgroundColor: Colors.white,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
+        elevation: 15.0,
         currentIndex: indiceAtual,
         onTap: onTabTapped,
         items: [

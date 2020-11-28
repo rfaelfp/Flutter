@@ -46,39 +46,57 @@ List<Widget> addWidgetList(Map map) {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               side: BorderSide(color: Colors.grey[500], width: 1.5)),
+          semanticContainer: true,
           clipBehavior: Clip.antiAlias,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 8, 0, 0),
-                child: FutureBuilder(
-                  future: infoVideo.preencheLista(video),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Container(
-                        child: Text('Carregando...'),
-                      );
-                    } else {
-                      return Text(
-                        snapshot.data['title'] +
-                            '\n' +
-                            snapshot.data['author_name'],
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      );
-                    }
-                  },
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/tex.png'), fit: BoxFit.fill),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 8, 0, 15),
+                  child: FutureBuilder(
+                    future: infoVideo.preencheLista(video),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Container(
+                          child: Text('Carregando...'),
+                        );
+                      } else {
+                        return Column(
+                          children: [
+                            Center(
+                              child: Text(
+                                snapshot.data['title'],
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Text(
+                                snapshot.data['author_name'],
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            )
+                          ],
+                        );
+                      }
+                    },
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
-                child: implementsWindowVideo(
-                  implementsVideo(video),
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: implementsWindowVideo(
+                    implementsVideo(video),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -99,27 +117,3 @@ Future addVideos(Map links) async {
     ),
   );
 }
-
-final List<String> listModuloFinanceiro = [
-  '8jjlGq86PHo',
-  's5pb8YLaVXA',
-  '09kssWxWbVY',
-  'xMqCZSy1yU4'
-];
-final List<String> listModuloComunicacao = [
-  'giONDI-shl0',
-  'giONDI-shl0',
-  'giONDI-shl0'
-];
-final List<String> listModuloTecnologia = [
-  'Ou0ceDK492w',
-  'Ou0ceDK492w',
-  'Ou0ceDK492w',
-  'Ou0ceDK492w'
-];
-final List<String> listModuloGestao = [
-  'vqAgbGQRw0A',
-  'vqAgbGQRw0A',
-  'vqAgbGQRw0A',
-  'vqAgbGQRw0A'
-];
