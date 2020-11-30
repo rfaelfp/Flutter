@@ -21,11 +21,7 @@ class DatabaseService {
     });
   }
 
-  Future<DocumentSnapshot> getUserData() async {
-    return await newUserCollection.document().get();
-  }
-
-  Future getTeste() async {
-    return await auth.currentUserUID();
+  Future<DocumentSnapshot> getUserData(String uid) async {
+    return await newUserCollection.document(uid).get();
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_anima/models/user.dart';
 import 'package:projeto_anima/service/database.dart';
+import 'package:projeto_anima/service/email_sender.dart';
 import 'package:projeto_anima/service/estado_acompanhamento.dart';
 import 'package:projeto_anima/util/loading.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,9 @@ class Acompanhamento extends StatefulWidget {
 
 class _AcompanhamentoState extends State<Acompanhamento> {
   DatabaseService data = DatabaseService();
-  String resposta;
+  Map map = Map();
+  String resp1;
+  String resp2;
   String perg1 =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?';
   String perg2 = 'Qual o faturamento no período?';
@@ -89,7 +92,7 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                                       ? "Preencher a resposta"
                                       : null,
                                   onChanged: (val) {
-                                    setState(() => resposta = val);
+                                    setState(() => resp1 = val);
                                   },
                                 ),
                                 Text(
@@ -121,7 +124,7 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                                       ? "Preencher a resposta"
                                       : null,
                                   onChanged: (val) {
-                                    setState(() => resposta = val);
+                                    setState(() => resp2 = val);
                                   },
                                 ),
                               ],
@@ -138,9 +141,18 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
+                            await data
+                                .getUserData(user.uid)
+                                .then((value) => map = value.data);
+                            EmailSender email = EmailSender(
+                                perg1: perg1,
+                                perg2: perg2,
+                                resp1: resp1,
+                                resp2: resp2,
+                                map: map);
+                            email.sendEmail();
                             setState(() {});
                             await estado.updateFieldAcompanhamento(user.uid);
-                            await data.getUserData();
                           }
                         }),
                   ),
