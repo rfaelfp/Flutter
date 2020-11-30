@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:projeto_anima/service/auth.dart';
 
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
+  AuthService auth;
 
   // Coleção de referência
   final CollectionReference newUserCollection =
@@ -17,5 +19,13 @@ class DatabaseService {
       'email': email,
       'acompanhamento': acompanhamento,
     });
+  }
+
+  Future<DocumentSnapshot> getUserData() async {
+    return await newUserCollection.document().get();
+  }
+
+  Future getTeste() async {
+    return await auth.currentUserUID();
   }
 }

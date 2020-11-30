@@ -64,6 +64,11 @@ class AuthService {
     }
   }
 
+  Future<String> currentUserUID() async {
+    FirebaseUser user = await _auth.currentUser();
+    return user?.uid;
+  }
+
   // Método para deslogar
   Future signOut() async {
     try {

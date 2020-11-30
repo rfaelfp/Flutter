@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:projeto_anima/service/auth.dart';
 import 'package:projeto_anima/util/constants.dart';
 import 'package:projeto_anima/util/loading.dart';
-import 'package:projeto_anima/service/url_form.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -13,7 +12,6 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final UrlForm _url = UrlForm();
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
@@ -173,7 +171,6 @@ class _RegisterState extends State<Register> {
                                     fontWeight: FontWeight.bold),
                               ),
                               onPressed: () async {
-                                _url.main();
                                 if (_formKey.currentState.validate()) {
                                   setState(() => loading = true);
                                   dynamic result =

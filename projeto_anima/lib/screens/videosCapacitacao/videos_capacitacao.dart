@@ -70,21 +70,25 @@ class _VideosCapacitacaoState extends State<VideosCapacitacao> {
                     height: 50.0,
                     color: c,
                   ),
-                  FutureBuilder(
-                    future: widget.index == 1
-                        ? addVideos(mapVideos)
-                        : widget.index == 2
+                  Column(
+                    children: [
+                      FutureBuilder(
+                        future: widget.index == 1
                             ? addVideos(mapVideos)
-                            : widget.index == 3
+                            : widget.index == 2
                                 ? addVideos(mapVideos)
-                                : addVideos(mapVideos),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) {
-                        return Loading();
-                      } else {
-                        return snapshot.data;
-                      }
-                    },
+                                : widget.index == 3
+                                    ? addVideos(mapVideos)
+                                    : addVideos(mapVideos),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return Container();
+                          } else {
+                            return snapshot.data;
+                          }
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),

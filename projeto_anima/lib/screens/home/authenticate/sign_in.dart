@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_anima/service/auth.dart';
-import 'package:projeto_anima/service/url_form.dart';
 import 'package:projeto_anima/util/constants.dart';
 import 'package:projeto_anima/util/loading.dart';
 
@@ -14,7 +13,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-  final UrlForm _url = UrlForm();
+
   bool loading = false;
 
   // Estado do campo de texto
@@ -101,7 +100,6 @@ class _SignInState extends State<SignIn> {
                                   fontWeight: FontWeight.bold),
                             ),
                             onPressed: () async {
-                              _url.main();
                               if (_formKey.currentState.validate()) {
                                 setState(() => loading = true);
                                 dynamic result = await _auth

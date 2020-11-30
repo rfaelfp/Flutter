@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_anima/util/card.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Capacitacao extends StatefulWidget {
   @override
@@ -9,10 +8,8 @@ class Capacitacao extends StatefulWidget {
 
 class _CapacitacaoState extends State<Capacitacao> {
   Color c = const Color(0xFF363a7b);
-  final keyLoad = 'loaded';
+
   Widget build(BuildContext context) {
-    //SharedPreferences.setMockInitialValues({});
-    //Future.delayed(Duration.zero, () => _showAlert(context));
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: Container(
@@ -64,33 +61,5 @@ class _CapacitacaoState extends State<Capacitacao> {
         ),
       ),
     );
-  }
-
-  _showAlert(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool firstLoad = prefs.getBool(keyLoad);
-    if (firstLoad == null) {
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                title: Text(
-                  "Acompanhamento do Negócio",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                content: Text(
-                    'Gentileza acessar a opção acompanhamento e responder o questionário.'),
-                actions: [
-                  FlatButton(
-                    child: Text('OK'),
-                    onPressed: () {
-                      prefs.setBool(keyLoad, false);
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ],
-              ));
-    }
   }
 }

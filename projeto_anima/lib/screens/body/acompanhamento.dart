@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_anima/models/user.dart';
+import 'package:projeto_anima/service/database.dart';
 import 'package:projeto_anima/service/estado_acompanhamento.dart';
 import 'package:projeto_anima/util/loading.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +12,12 @@ class Acompanhamento extends StatefulWidget {
 }
 
 class _AcompanhamentoState extends State<Acompanhamento> {
+  DatabaseService data = DatabaseService();
   String resposta;
+  String perg1 =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?';
+  String perg2 = 'Qual o faturamento no período?';
   final _formKey = GlobalKey<FormState>();
-  FocusNode myFocusNode = new FocusNode();
   EstadoAcompanhamento estado = EstadoAcompanhamento();
   @override
   Widget build(BuildContext context) {
@@ -50,42 +54,78 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                       key: _formKey,
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 15.0),
+                            vertical: 0.0, horizontal: 15.0),
                         child: Column(
                           children: [
-                            Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?',
+                            Column(
+                              children: [
+                                Text(
+                                  perg1,
+                                  textAlign: TextAlign.start,
+                                ),
+                                SizedBox(
+                                  height: 20.0,
+                                ),
+                                TextFormField(
+                                  cursorColor: const Color(0xFF0098fc),
+                                  decoration: InputDecoration(
+                                      labelText: "Resposta",
+                                      labelStyle:
+                                          TextStyle(color: Colors.black),
+                                      fillColor: Colors.white,
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          borderSide: BorderSide(
+                                              color: const Color(0xFF0098fc))),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: const Color(0xFF0098fc)),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0))),
+                                  keyboardType: TextInputType.multiline,
+                                  maxLines: 10,
+                                  validator: (val) => val.isEmpty
+                                      ? "Preencher a resposta"
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => resposta = val);
+                                  },
+                                ),
+                                Text(
+                                  perg2,
+                                  textAlign: TextAlign.start,
+                                ),
+                                SizedBox(
+                                  height: 20.0,
+                                  width: 200,
+                                ),
+                                TextFormField(
+                                  cursorColor: const Color(0xFF0098fc),
+                                  decoration: InputDecoration(
+                                      labelText: '',
+                                      labelStyle:
+                                          TextStyle(color: Colors.black),
+                                      fillColor: Colors.white,
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          borderSide: BorderSide(
+                                              color: const Color(0xFF0098fc))),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: const Color(0xFF0098fc)),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0))),
+                                  validator: (val) => val.isEmpty
+                                      ? "Preencher a resposta"
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => resposta = val);
+                                  },
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            TextFormField(
-                              focusNode: myFocusNode,
-                              cursorColor: const Color(0xFF0098fc),
-                              decoration: InputDecoration(
-                                  labelText: "Resposta",
-                                  labelStyle: TextStyle(
-                                      color: myFocusNode.hasFocus
-                                          ? Colors.black
-                                          : const Color(0xFF0098fc)),
-                                  fillColor: Colors.white,
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      borderSide: BorderSide(
-                                          color: const Color(0xFF0098fc))),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: const Color(0xFF0098fc)),
-                                      borderRadius:
-                                          BorderRadius.circular(20.0))),
-                              keyboardType: TextInputType.multiline,
-                              maxLines: 10,
-                              validator: (val) =>
-                                  val.isEmpty ? "Preencher a resposta" : null,
-                              onChanged: (val) {
-                                setState(() => resposta = val);
-                              },
-                            )
                           ],
                         ),
                       )),
@@ -100,6 +140,7 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                           if (_formKey.currentState.validate()) {
                             setState(() {});
                             await estado.updateFieldAcompanhamento(user.uid);
+                            await data.getUserData();
                           }
                         }),
                   ),

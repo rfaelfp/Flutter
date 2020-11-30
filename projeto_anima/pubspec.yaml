@@ -37,6 +37,9 @@ dependencies:
   webview_flutter: ^0.3.0
   firebase_core: ^0.4.4+3
   shared_preferences: ^0.5.12+4
+  pdf: ^1.12.0
+  advance_pdf_viewer: ^1.2.1+1
+  share_extend: ^1.1.9
 
 dev_dependencies:
   flutter_test:
