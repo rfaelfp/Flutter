@@ -51,7 +51,8 @@ List<Widget> addWidgetList(Map map) {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/tex.png'), fit: BoxFit.fill),
+                  image: AssetImage('assets/images/tex5.jpg'),
+                  fit: BoxFit.fill),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,6 +65,7 @@ List<Widget> addWidgetList(Map map) {
                       if (!snapshot.hasData) {
                         return Container(
                           child: Text('Carregando...'),
+                          alignment: Alignment.center,
                         );
                       } else {
                         return Column(

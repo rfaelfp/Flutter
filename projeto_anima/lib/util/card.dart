@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_anima/screens/certificado/certificado_view.dart';
 import 'package:projeto_anima/screens/videosCapacitacao/videos_capacitacao.dart';
 
 Container cardCapacitacao(BuildContext context, String titulo,
@@ -17,7 +18,7 @@ Container cardCapacitacao(BuildContext context, String titulo,
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/tex.png'), fit: BoxFit.contain),
+              image: AssetImage('assets/images/tex2.jpg'), fit: BoxFit.fill),
         ),
         child: Column(
           children: [
@@ -84,8 +85,7 @@ Container cardCapacitacao(BuildContext context, String titulo,
                     onPressed: () async {
                       await Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return VideosCapacitacao(
-                              titulo: titulo, index: index);
+                          return CertificadoView();
                         },
                       ));
                     },
