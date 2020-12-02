@@ -25,6 +25,7 @@ class _RegisterState extends State<Register> {
   String pwdRepeat = '';
   String error = '';
   bool acompanhamento = false;
+  DateTime data = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +181,8 @@ class _RegisterState extends State<Register> {
                                           nome,
                                           sobrenome,
                                           cpf,
-                                          acompanhamento);
+                                          acompanhamento,
+                                          data);
                                   print(result);
                                   if (result == null) {
                                     setState(() {

@@ -23,6 +23,8 @@ class _AcompanhamentoState extends State<Acompanhamento> {
   String perg2 = 'Qual o faturamento no período?';
   final _formKey = GlobalKey<FormState>();
   EstadoAcompanhamento estado = EstadoAcompanhamento();
+  DateTime dataAtual = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -147,54 +149,89 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                                 resp2: resp2,
                                 map: map);
                             email.sendEmail();
-                            setState(() {});
                             await estado.updateFieldAcompanhamento(user.uid);
+                            await estado.updateFieldDataAcompanhamento(
+                                user.uid, dataAtual);
+                            setState(() {});
                           }
                         }),
                   ),
                 ],
               );
             } else if (snapshot.data['acompanhamento'] == true) {
-              return Column(
-                children: [
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Acompanhamento',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            shadows: [
-                              Shadow(blurRadius: 4.0, color: Colors.white)
-                            ]),
+              DateTime dataEnvioAcompanhamento =
+                  snapshot.data['data acompanhamento'].toDate();
+              var dataSeisMesesFuturo =
+                  dataEnvioAcompanhamento.add(new Duration(seconds: 15778800));
+              int dias =
+                  dataSeisMesesFuturo.difference(dataAtual).inDays.toInt();
+              if (dias <= 0) {
+                setState(() async {
+                  await estado.updateFieldAcompanhamentoFalse(user.uid);
+                  setState(() {});
+                });
+              } else {
+                return Column(
+                  children: [
+                    Container(
+                      child: Center(
+                        child: Text(
+                          'Acompanhamento',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              shadows: [
+                                Shadow(blurRadius: 4.0, color: Colors.white)
+                              ]),
+                        ),
                       ),
+                      color: const Color(0xFF363a7b),
+                      height: 50.0,
                     ),
-                    color: const Color(0xFF363a7b),
-                    height: 50.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Center(
-                      child: Text(
-                        'O acompanhamento foi enviado. \nGentileza aguardar...',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16,
+                    Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'O acompanhamento foi enviado.\nUm novo acompanhamento deve ser enviado em',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              dataSeisMesesFuturo
+                                  .difference(dataAtual)
+                                  .inDays
+                                  .toString(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 120),
+                            ),
+                            Text(
+                              'dias',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
-                  ),
-                ],
-              );
+                  ],
+                );
+              }
             } else {
               return Center(
-                child: Text('O usuário não possui essa opção.'),
+                child: Text('O usuário não tem essa opção!'),
               );
             }
           } catch (e) {
             return Center(
-              child: Text("Ops... algo ocorreu!"),
+              child: Text('...'),
             );
           }
         },

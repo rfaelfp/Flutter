@@ -13,9 +13,9 @@ class EmailSender {
 
   sendEmail() async {
     var _list = map.values.toList();
-    String nome = _list[2] + ' ' + _list[3];
+    String nome = _list[2] + ' ' + _list[4];
     String cpf = _list[1];
-    String email = _list[4];
+    String email = _list[5];
     String body =
         'O usuário $nome com o CPF $cpf inscrito no sistema com o email $email realizou o acompanhamento' +
             ' de negócio.<p>Pergunta 1:<p> $perg1<p>$resp1<p>' +

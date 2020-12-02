@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
         showSelectedLabels: true,
         backgroundColor: Colors.white,
         unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: const Color(0xFF0098fc),
         elevation: 15.0,
         currentIndex: indiceAtual,
         onTap: onTabTapped,

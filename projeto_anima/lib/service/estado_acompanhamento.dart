@@ -10,8 +10,20 @@ class EstadoAcompanhamento {
   }
 
   Future updateFieldAcompanhamento(String uid) async {
+    return await estadoAcompanhamento.document(uid).updateData({
+      'acompanhamento': true,
+    });
+  }
+
+  Future updateFieldAcompanhamentoFalse(String uid) async {
+    return await estadoAcompanhamento.document(uid).updateData({
+      'acompanhamento': false,
+    });
+  }
+
+  Future updateFieldDataAcompanhamento(String uid, DateTime dataTime) async {
     return await estadoAcompanhamento
         .document(uid)
-        .updateData({'acompanhamento': true});
+        .updateData({'data acompanhamento': dataTime});
   }
 }

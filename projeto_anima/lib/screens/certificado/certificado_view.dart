@@ -32,16 +32,15 @@ class _CertificadoViewState extends State<CertificadoView> {
             } else {
               return PDFViewerScaffold(
                   appBar: AppBar(
-                    leading: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.black,
-                      ),
-                      onPressed: () async {
-                        await Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (context) => Home()),
-                            (Route<dynamic> route) => false);
-                      },
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/log2.png',
+                          fit: BoxFit.contain,
+                          height: 26,
+                        )
+                      ],
                     ),
                     backgroundColor: Colors.white,
                     actions: <Widget>[
