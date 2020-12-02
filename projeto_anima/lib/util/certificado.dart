@@ -5,45 +5,39 @@ import 'package:path_provider/path_provider.dart';
 
 class Certificado {
   String generatedPdfFilePath;
-  Future<void> generateExampleDocument() async {
+  Future<String> generateExampleDocument() async {
     var htmlContent = """
     <!DOCTYPE html>
-    <html>
-      <head>
-        <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td, p {
-          padding: 5px;
-          text-align: left;
-        }
-        </style>
-      </head>
-      <body>
-        <h2>PDF Generated with flutter_html_to_pdf plugin</h2>
-        
-        <table style="width:100%">
-          <caption>Sample HTML Table</caption>
-          <tr>
-            <th>Month</th>
-            <th>Savings</th>
-          </tr>
-          <tr>
-            <td>January</td>
-            <td>100</td>
-          </tr>
-          <tr>
-            <td>February</td>
-            <td>50</td>
-          </tr>
-        </table>
-        
-        <p>Image loaded from web</p>
-        <img src="https://i.imgur.com/wxaJsXF.png" alt="web-img">
-      </body>
-    </html>
+<html>
+   <head>
+      <style>
+         table, th, td {
+         border: 1px solid black;
+         border-collapse: collapse;
+         }
+         th, td, p {
+         padding: 5px;
+         text-align: left;
+         }
+      </style>
+   </head>
+   <body>
+      <div style="width:800px; height:600px; padding:20px; text-align:center; border: 10px solid #787878">
+         <div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
+            <span style="font-size:50px; font-weight:bold">Certificado de Conclusão</span>
+            <br><br>
+            <span style="font-size:25px"><i>This is to certify that</i></span>
+            <br><br>
+            <span style="font-size:30px"><b></b></span><br/><br/>
+            <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
+            <span style="font-size:30px"></span> <br/><br/>
+            <span style="font-size:20px">with score of <b></b></span> <br/><br/><br/><br/>
+            <span style="font-size:25px"><i>dated</i></span><br>
+            <span style="font-size:30px"></span>
+         </div>
+      </div>
+   </body>
+</html>
     """;
 
     Directory appDocDir = await getApplicationDocumentsDirectory();
@@ -53,5 +47,6 @@ class Certificado {
     var generatedPdfFile = await FlutterHtmlToPdf.convertFromHtmlContent(
         htmlContent, targetPath, targetFileName);
     generatedPdfFilePath = generatedPdfFile.path;
+    return generatedPdfFilePath;
   }
 }
