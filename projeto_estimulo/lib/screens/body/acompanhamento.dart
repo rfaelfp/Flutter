@@ -195,7 +195,7 @@ class _AcompanhamentoState extends State<Acompanhamento> {
                         child: Column(
                           children: [
                             Text(
-                              'O acompanhamento foi enviado.\nUm novo acompanhamento deve ser enviado em',
+                              '\nAs respostas foram enviadas para análise.\nO acompanhamento será aberto novamente em',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16,
