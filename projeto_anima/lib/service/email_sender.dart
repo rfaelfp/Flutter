@@ -12,10 +12,9 @@ class EmailSender {
   EmailSender({this.perg1, this.perg2, this.resp1, this.resp2, this.map});
 
   sendEmail() async {
-    var _list = map.values.toList();
-    String nome = _list[2] + ' ' + _list[4];
-    String cpf = _list[1];
-    String email = _list[5];
+    String nome = map['nome'] + ' ' + map['sobrenome'];
+    String cpf = map['cpf'];
+    String email = map['email'];
     String body =
         'O usuário $nome com o CPF $cpf inscrito no sistema com o email $email realizou o acompanhamento' +
             ' de negócio.<p>Pergunta 1:<p> $perg1<p>$resp1<p>' +

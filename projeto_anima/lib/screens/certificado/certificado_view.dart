@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
-import 'package:projeto_anima/screens/body/acompanhamento.dart';
-import 'package:projeto_anima/screens/body/capacitacao.dart';
-import 'package:projeto_anima/screens/home/home.dart';
+import 'package:projeto_anima/models/user.dart';
 import 'package:projeto_anima/util/certificado.dart';
 import 'package:projeto_anima/util/loading.dart';
+import 'package:provider/provider.dart';
 import 'package:share_extend/share_extend.dart';
 
 class CertificadoView extends StatefulWidget {
+  final String titulo;
+  final Map map;
+  CertificadoView(this.titulo, this.map);
   @override
   _CertificadoViewState createState() => _CertificadoViewState();
 }
@@ -15,17 +17,14 @@ class CertificadoView extends StatefulWidget {
 class _CertificadoViewState extends State<CertificadoView> {
   Certificado certificado = Certificado();
   @override
-  /*void initState() {
-    super.initState();
-    certificado.generateExampleDocument();
-  }*/
-
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: FutureBuilder(
-          future: certificado.generateExampleDocument(),
+          future: certificado.generateExampleDocument(
+              widget.titulo, user.uid, widget.map),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Loading();

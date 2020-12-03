@@ -15,7 +15,7 @@ class Acompanhamento extends StatefulWidget {
 
 class _AcompanhamentoState extends State<Acompanhamento> {
   DatabaseService data = DatabaseService();
-  Map map = Map();
+  Map<String, dynamic> map = Map();
   String resp1;
   String resp2;
   String perg1 =

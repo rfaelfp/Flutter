@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_anima/models/user.dart';
 import 'package:projeto_anima/screens/certificado/certificado_view.dart';
 import 'package:projeto_anima/screens/videosCapacitacao/videos_capacitacao.dart';
+import 'package:provider/provider.dart';
 
-Container cardCapacitacao(BuildContext context, String titulo,
-    String textoSecundario, String descricao, String imagem, int index) {
+Container cardCapacitacao(
+    BuildContext context,
+    String titulo,
+    String textoSecundario,
+    String descricao,
+    String imagem,
+    int index,
+    Map map) {
   return Container(
     decoration:
         BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(30))),
@@ -85,7 +93,7 @@ Container cardCapacitacao(BuildContext context, String titulo,
                     onPressed: () async {
                       await Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return CertificadoView();
+                          return CertificadoView(titulo, map);
                         },
                       ));
                     },

@@ -25,4 +25,8 @@ class DatabaseService {
   Future<DocumentSnapshot> getUserData(String uid) async {
     return await newUserCollection.document(uid).get();
   }
+
+  Stream<DocumentSnapshot> getUserDataSnap(String uid) {
+    return Firestore.instance.collection('users').document(uid).snapshots();
+  }
 }
