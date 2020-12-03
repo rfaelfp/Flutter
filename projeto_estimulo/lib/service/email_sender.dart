@@ -21,7 +21,7 @@ class EmailSender {
             'Pergunta 2:<p>$perg2<p>' +
             '$resp2';
     url +=
-        'animaprojetoapp@gmail.com&assunto=Aviso de Acompanhamento do Negócio&body=' +
+        'animaprojetoapp@gmail.com&dest=$email&assunto=Aviso de Acompanhamento do Negócio&body=' +
             body;
     var res = await http.get(url);
 
