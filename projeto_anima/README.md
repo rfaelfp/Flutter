@@ -3,8 +3,8 @@
 <img src="https://www.estimulo2020.org/wp-content/uploads/2020/04/Logomarca-Estimulo2020.png" alt="banner" height="260" width="242">
 </h1>
 
-
-O presente projeto tem por escopo desenvolver uma aplicação mobile funcional para atender as necessidade do projeto Estímulo 2020.
+## 💻 Sobre o projeto
+O presente projeto tem por escopo desenvolver uma aplicação mobile funcional para atender as necessidade do projeto Estímulo 2020. 
 
 
 ### 🛠 Tecnologias
