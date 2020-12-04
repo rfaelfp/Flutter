@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_anima/models/user.dart';
 import 'package:projeto_anima/screens/certificado/certificado_view.dart';
 import 'package:projeto_anima/screens/videosCapacitacao/videos_capacitacao.dart';
-import 'package:provider/provider.dart';
 
 Container cardCapacitacao(
     BuildContext context,
@@ -55,10 +53,10 @@ Container cardCapacitacao(
               ),
             ),
             ButtonBar(
-              alignment: MainAxisAlignment.spaceEvenly,
+              alignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
-                  width: 170,
+                  width: 160,
                   child: FlatButton(
                     color: Color(0xFF57d988),
                     textColor: Colors.white,
@@ -85,7 +83,7 @@ Container cardCapacitacao(
                   ),
                 ),
                 SizedBox(
-                  width: 170,
+                  width: 160,
                   child: FlatButton(
                     color: Color(0xFF57d988),
                     textColor: Colors.white,
