@@ -31,6 +31,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Cloud Firestore](https://firebase.google.com/docs/firestore)
 - [Cloud Functions for Firebase](https://firebase.google.com/products/functions?hl=pt-br)
 - [Node.js](https://nodejs.org/en/)
+- [Nodemailer](https://nodemailer.com/about/)
 
 
 ## 🎨 Layout
