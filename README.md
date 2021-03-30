@@ -64,7 +64,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 <h2 id=autor>:grin: Autor</h2>
 
 Desenvolvido por 
-<a href="https://www.linkedin.com/in/rafael-ferreira-pedrosa-021b16ba/" target="_blank">Rafael Ferreira Pedrosa</a>,
+<a href="https://www.linkedin.com/in/rafael-ferreira-pedrosa-021b16ba/" target="_blank">Rafael Ferreira Pedrosa</a>.
 
 ## 📝 Licença
 
