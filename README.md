@@ -61,6 +61,11 @@ As seguintes ferramentas foram usadas na construção do projeto:
 4. Envie as suas alterações: `git push origin my-feature`
 > Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](./CONTRIBUTING.md)
 
+<h2 id=autor>:grin: Autor</h2>
+
+Desenvolvido por 
+<a href="https://www.linkedin.com/in/rafael-ferreira-pedrosa-021b16ba/" target="_blank">Rafael Ferreira Pedrosa</a>.
+
 ## 📝 Licença
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
